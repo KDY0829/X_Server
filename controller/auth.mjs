@@ -47,3 +47,12 @@ export async function login(req, res, next) {
   const token = await createJwtToken(user.id);
   res.status(200).json({ token, user });
 }
+
+export async function me(req, res, next) {
+  //   const user = await authRepository.findByUserid(req.id);
+  //   if (!user) {
+  //     return res.stutus(404).json({ message: "일치하는 사용자가 없음" });
+  //   }
+  //   res.status(200).json({ token: req.token, userid: user.userid });
+  res.status(200).json("성공");
+}
