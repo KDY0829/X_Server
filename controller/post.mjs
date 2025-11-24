@@ -12,7 +12,7 @@ export async function getPosts(req, res, next) {
 // 하나의 포스트를 가져오는 함수
 export async function getPost(req, res, next) {
   const id = req.params.id;
-  const post = await postRepository.getByID(id);
+  const post = await postRepository.getById(id);
   if (post) {
     res.status(200).json(post);
   } else {
@@ -22,8 +22,9 @@ export async function getPost(req, res, next) {
 
 // 포스트를 작성하는 함수
 export async function createPost(req, res, next) {
-  const { userid, name, text } = req.body;
-  const post = await postRepository.create(userid, name, text);
+  const { text } = req.body;
+  console.log("req.idx: ", req.idx);
+  const post = await postRepository.create(text, req.idx);
   res.status(201).json(post);
 }
 

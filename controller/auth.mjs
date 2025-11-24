@@ -4,15 +4,15 @@ import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { config } from "../config.mjs";
 
-async function createJwtToken(id) {
-  return jwt.sign({ id }, config.jwt.secertKey, {
+async function createJwtToken(idx) {
+  return jwt.sign({ idx }, config.jwt.secertKey, {
     expiresIn: config.jwt.expiresInSec,
   });
 }
 
 // 회원가입 함수
 export async function signup(req, res, next) {
-  const { userid, password, name, email } = req.body;
+  const { userid, password, name, email, url } = req.body;
 
   // 회원 중복 체크
   const found = await authRepository.findByUserid(userid);
@@ -21,7 +21,13 @@ export async function signup(req, res, next) {
   }
 
   const hashed = bcrypt.hashSync(password, config.bcrypt.saltRounds);
-  const user = await authRepository.createUser(userid, hashed, name, email);
+  const user = await authRepository.createUser({
+    userid,
+    password: hashed,
+    name,
+    email,
+    url,
+  });
 
   //   const user = await authRepository.createUser(userid, password, name, email);
   const token = await createJwtToken(user.id);
@@ -43,15 +49,14 @@ export async function login(req, res, next) {
     return res.status(401).json({ message: `아이디 또는 비밀번호 확인` });
   }
 
-  const token = await createJwtToken(user.id);
+  const token = await createJwtToken(user.idx);
   res.status(200).json({ token, user });
 }
 
 export async function me(req, res, next) {
-  //   const user = await authRepository.findByUserid(req.id);
-  //   if (!user) {
-  //     return res.stutus(404).json({ message: "일치하는 사용자가 없음" });
-  //   }
-  //   res.status(200).json({ token: req.token, userid: user.userid });
-  res.status(200).json("성공");
+  const user = await authRepository.findById(req.idx);
+  if (!user) {
+    return res.stutus(404).json({ message: "일치하는 사용자가 없음" });
+  }
+  res.status(200).json({ token: req.token, userid: user.idx });
 }

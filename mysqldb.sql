@@ -12,7 +12,10 @@ create table users (
 create table posts (
 	id int auto_increment primary key,
     useridx int not null,
-    createAt datetime default now(),
+    createdAt datetime default now(),
     text varchar(2000) not null,
     foreign key(useridx) references users(idx)
 );
+
+select * from users;
+select * from posts;
