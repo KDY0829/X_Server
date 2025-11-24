@@ -2,13 +2,12 @@ import express from "express";
 import * as authRepository from "../data/auth.mjs";
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-const secretKey = "abcdefg1234!@#$";
-const bcryptSaltRounts = 10;
-const jwtExpiresInDays = "2d";
+import { config } from "../config.mjs";
 
 async function createJwtToken(id) {
-  return jwt.sign({ id }, secretKey, { expiresIn: jwtExpiresInDays });
+  return jwt.sign({ id }, config.jwt.secertKey, {
+    expiresIn: config.jwt.expiresInSec,
+  });
 }
 
 // 회원가입 함수
@@ -21,7 +20,7 @@ export async function signup(req, res, next) {
     return res.status(409).json({ message: `${userid}이 이미 있습니다.` });
   }
 
-  const hashed = bcrypt.hashSync(password, bcryptSaltRounts);
+  const hashed = bcrypt.hashSync(password, config.bcrypt.saltRounds);
   const user = await authRepository.createUser(userid, hashed, name, email);
 
   //   const user = await authRepository.createUser(userid, password, name, email);
