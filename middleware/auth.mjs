@@ -18,6 +18,7 @@ export const isAuth = async (req, res, next) => {
   // console.log("토큰 분리 성공");
 
   jwt.verify(token, config.jwt.secertKey, async (error, decoded) => {
+    console.log(config.jwt.secertKey);
     if (error) {
       console.log("토큰 에러");
       return res.status(401).json(AUTH_ERROR);
@@ -30,7 +31,7 @@ export const isAuth = async (req, res, next) => {
     }
     console.log("user.id:", user.id);
     console.log("user.userid:", user.userid);
-    req.userid = user.userid;
+    req.id = user.id;
 
     next();
   });
