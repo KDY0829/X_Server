@@ -6,7 +6,7 @@ import { config } from "./config.mjs";
 import { connectDB } from "./db/database.mjs";
 
 const app = express();
-
+app.use(express.static("Client"));
 app.use(express.json());
 
 app.use("/post", postsRouter);

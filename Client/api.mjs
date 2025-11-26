@@ -20,5 +20,5 @@ export function clearToken() {
 
 function authHeader() {
   const token = getToken();
-  return t ? { Authorization: `Bearer ${token}` } : {};
+  return token ? { Authorization: `Bearer ${token}` } : {};
 }

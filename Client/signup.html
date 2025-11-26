@@ -1,10 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>회원가입 페이지</title>
-    <script type="module" src="./js/signup.mjs"></script>
+
+    <script type="module" src="./js/signup.mjs" defer></script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url("https://mdbootstrap.com/img/new/fluid/city/008.jpg")
+          center/cover no-repeat;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+      .signup-box {
+        width: 100%;
+        max-width: 420px;
+        margin-top: 90px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 32px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+      }
+      h2 {
+        margin: 0 0 24px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 16px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        box-sizing: border-box;
+        margin-bottom: 18px;
+      }
+      input:focus {
+        outline: none;
+        border-color: #4d7fff;
+        box-shadow: 0 0 4px rgba(77, 127, 255, 0.5);
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #4d7fff;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #3369ff;
+      }
+      .to-login {
+        margin-top: 16px;
+        text-align: center;
+        font-size: 14px;
+      }
+      .to-login a {
+        color: #3369ff;
+        text-decoration: none;
+      }
+      .to-login a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
-  <body></body>
+
+  <body>
+    <div class="signup-box">
+      <h2>회원가입</h2>
+
+      <form id="signupForm">
+        <label for="signupUserId">아이디</label>
+        <input
+          type="text"
+          id="signupUserId"
+          name="userid"
+          placeholder="아이디를 입력하세요"
+        />
+
+        <label for="signupPw">비밀번호</label>
+        <input
+          type="password"
+          id="signupPw"
+          name="password"
+          placeholder="비밀번호를 입력하세요"
+        />
+
+        <label for="signupName">이름</label>
+        <input
+          type="text"
+          id="signupName"
+          name="name"
+          placeholder="이름을 입력하세요"
+        />
+
+        <label for="signupEmail">이메일</label>
+        <input
+          type="email"
+          id="signupEmail"
+          name="email"
+          placeholder="example@domain.com"
+        />
+
+        <label for="signupPhotoUrl">프로필 사진(URL)</label>
+        <input
+          type="url"
+          id="signupPhotoUrl"
+          name="photoUrl"
+          placeholder="https://example.com/photo.png"
+        />
+
+        <button id="btnSignup" type="submit">회원가입 완료</button>
+
+        <p class="to-login">
+          이미 계정이 있으신가요? <a href="./login.html">로그인</a>
+        </p>
+      </form>
+    </div>
+  </body>
 </html>
