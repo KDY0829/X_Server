@@ -24,8 +24,8 @@ JWT 로그인/회원가입/포스트 **작성·수정·삭제**가 되는 최소
 │  ├─ post_new.html
 │  ├─ post_update.html
 │  ├─ posts.html
-│  ├─ signup.html
-│  └─ style.css
+│  └─ signup.html
+│  
 ├─ controller/
 │  ├─ auth.mjs
 │  └─ post.mjs
