@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>시작 페이지</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url("https://mdbootstrap.com/img/new/fluid/city/008.jpg")
+          center/cover no-repeat;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .box {
+        width: 100%;
+        max-width: 420px;
+        margin-top: 90px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+        text-align: center;
+      }
+
+      h2 {
+        margin: 0 0 18px 0;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      p.desc {
+        margin: 0 0 22px 0;
+        font-size: 14px;
+        color: #444;
+      }
+
+      .btn {
+        display: block;
+        width: 80%;
+        padding: 12px;
+        margin: 12px auto;
+        text-decoration: none;
+        text-align: center;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .btn-login {
+        background: #4d7fff;
+        color: #fff;
+      }
+      .btn-login:hover {
+        background: #3369ff;
+      }
+
+      .btn-signup {
+        background: #fff;
+        color: #4d7fff;
+        border: 1px solid #4d7fff;
+      }
+      .btn-signup:hover {
+        background: #f0f5ff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <h2>환영합니다</h2>
+      <p class="desc">아래에서 원하는 페이지로 이동하세요</p>
+
+      <a class="btn btn-login" href="./login.html">로그인</a>
+      <a class="btn btn-signup" href="./signup.html">회원가입</a>
+    </div>
+  </body>
+</html>

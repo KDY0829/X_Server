@@ -17,8 +17,8 @@ export const isAuth = async (req, res, next) => {
   console.log(token);
   // console.log("토큰 분리 성공");
 
-  jwt.verify(token, config.jwt.secertKey, async (error, decoded) => {
-    console.log(config.jwt.secertKey);
+  jwt.verify(token, config.jwt.secretKey, async (error, decoded) => {
+    console.log(config.jwt.secretKey);
     if (error) {
       console.log("토큰 에러");
       return res.status(401).json(AUTH_ERROR);

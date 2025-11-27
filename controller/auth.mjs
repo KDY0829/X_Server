@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import { config } from "../config.mjs";
 
 async function createJwtToken(id) {
-  return jwt.sign({ id }, config.jwt.secertKey, {
+  return jwt.sign({ id }, config.jwt.secretKey, {
     expiresIn: config.jwt.expiresInSec,
   });
 }
@@ -40,7 +40,7 @@ export async function login(req, res, next) {
   const { userid, password } = req.body;
   const user = await authRepository.findByUserid(userid);
   if (!user) {
-    res.status(401).json(`${userid}를 찾을 수 없음`);
+    return res.status(401).json({ message: `${userid}를 찾을 수 없음` });
   }
 
   const isValidPassword = await bcrypt.compare(password, user.password);

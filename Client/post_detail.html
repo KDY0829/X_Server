@@ -1,10 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>포스트 상세 페이지</title>
-    <script type="module" src="./js/post_detail.mjs"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>포스트 상세</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f6f7f9;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+          Arial, sans-serif;
+        color: #111;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        background: #fff;
+        border-bottom: 1px solid #e5e7eb;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        z-index: 1000;
+        font-weight: 800;
+      }
+
+      .page-offset {
+        height: 56px;
+      }
+
+      .wrap {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px 16px 60px;
+      }
+
+      .info-box {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+      }
+
+      .title {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+
+      .meta {
+        color: #6b7280;
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+      }
+
+      .content {
+        font-size: 1rem;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        padding: 10px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 24px;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        border: 1px solid #e5e7eb;
+        padding: 10px 12px;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      th {
+        background: #f1f3f5;
+        width: 180px;
+      }
+
+      .actions {
+        margin-top: 20px;
+        text-align: right;
+      }
+
+      .btn {
+        padding: 10px 14px;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 10px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <header class="topbar">Post Detail</header>
+    <div class="page-offset"></div>
+
+    <main class="wrap">
+      <section class="info-box">
+        <div class="title" id="detailName">작성자</div>
+        <div class="meta" id="detailTime">작성 시간</div>
+        <div class="content" id="detailText">내용 로딩중...</div>
+      </section>
+
+      <!-- 전체 필드를 Key-Value 테이블로 -->
+      <table id="kvTable"></table>
+
+      <div class="actions">
+        <a href="./posts.html" class="btn">목록</a>
+      </div>
+    </main>
+
+    <script type="module" src="./js/post_detail.mjs"></script>
+  </body>
 </html>
